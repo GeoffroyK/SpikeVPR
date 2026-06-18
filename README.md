@@ -63,10 +63,10 @@ the datasets here:
   (ground-truth tooling: [Event-LAB](https://github.com/EventLAB-Team/Event-LAB))
 - **NYC-Event-VPR**: https://ai4ce.github.io/NYC-Event-VPR/
 
-All three are fed to the model as (2, 260, 346) ON/OFF event frames — an
-anchor/positive place pair looks like:
+All three are fed to the model as (2, 260, 346) ON/OFF event frames (ON red, OFF
+blue) — query/reference place pairs across changing illumination look like:
 
-![Event-frame place pair](figures/event_frame_pair.png)
+<p align="center"><img src="figures/event_frame_pair.png" width="300"></p>
 
 ## Usage
 
@@ -183,19 +183,13 @@ evaluation CLIs; see [RUNBOOK.md](RUNBOOK.md)).
 orders of magnitude more efficient than the NetVLAD ANN ensemble and the
 event-VPR ResNet baseline (log scale, mJ):
 
-![Energy per inference](figures/energy_comparison.png)
-
-**Recall@N on NYC-Event-VPR** (night + dusk, 25 m tolerance), in standard and
-strict (cross-session) variants — SpikeVPR matches or beats the RGB and ensemble
-baselines while running on events only:
-
-![NYC night/dusk recall@N](figures/recall_day_night_dusk.png)
+<p align="center"><img src="figures/energy_comparison.png" width="360"></p>
 
 **Night-condition summary** — mean Recall@1 across all three datasets, with
 qualitative query/reference examples (SpikeVPR event frames, E2VID ensemble
 reconstructions, RGB):
 
-![Night recall summary](figures/night_recall_summary.png)
+<p align="center"><img src="figures/night_recall_summary.png" width="480"></p>
 
 ## Model
 
