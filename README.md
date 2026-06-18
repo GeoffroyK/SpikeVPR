@@ -67,14 +67,6 @@ recommended for training; evaluation and the tutorial run on CPU.
 
 Checkpoints are distributed outside git. Fetch them into `weights/`:
 
-```bash
-SPIKEVPR_WEIGHTS_URL=https://your-host/spikevpr/weights ./weights/download_weights.sh
-```
-
-All SpikeVPR descriptors are 4096-D. The MixVPR head neuron type must match the
-checkpoint: **`LIFNode`** for Brisbane/NSAVP, **`IFNode`** for NYC. See
-[weights/MANIFEST.md](weights/MANIFEST.md).
-
 ## Datasets
 
 Point `configs/<dataset>.yaml → dataset_paths` at your local copy. The expected
