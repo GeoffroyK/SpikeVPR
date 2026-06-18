@@ -1,0 +1,2 @@
+# Weights are distributed outside git (see MANIFEST.md / download_weights.sh)
+*.pth

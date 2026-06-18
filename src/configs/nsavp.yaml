@@ -1,0 +1,47 @@
+# NSAVP configuration
+# ===========================================================================
+#  EDIT `dataset_paths` (bottom of this file) to point at YOUR local copy.
+#  See DATASETS.md for the expected on-disk layout and how to reconstruct it.
+# ===========================================================================
+#
+# In each folder list the first entry is the reference/anchor traverse; the
+# remaining entries are query traverses paired with it. gps_*_files / gt_*_files
+# provide one positions (.npz) and one ground-truth (.npy) per query traverse.
+
+model:
+  aggregator_neuron: LIFNode
+
+data:
+  nsavp_geo_threshold: 10      # metres, distance binning + positive radius
+  denoise: 0.1
+  # EventDilation: random accumulation window (ns) for training; fixed for eval.
+  dilation_window: [18000000, 44000000]   # 18-44 ms (NSAVP t is in nanoseconds)
+  eval_window: 33000000                    # 33 ms, deterministic eval window
+
+training:
+  batch_size: 128
+  epochs: 300
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  patience: 50
+  temperature: 0.07
+
+evaluation:
+  recall_threshold: 30         # metres (Euclidean / EDEF) for a correct retrieval
+
+dataset_paths:
+  nsavp:
+    data_train_folders:
+      - /home/geoffroyk/Geoffroy_PHD/nsavp/R0_RS0-frames-1000/downsampled
+      - /home/geoffroyk/Geoffroy_PHD/nsavp/R0_RA0-frames-1000/downsampled
+    gps_train_files:
+      - /home/geoffroyk/Geoffroy_PHD/nsavp/ground_truth/R0_RS0_R0_RA0_GT_positions.npz
+    gt_train_files:
+      - /home/geoffroyk/Geoffroy_PHD/nsavp/ground_truth/R0_RS0_R0_RA0_GT.npy
+    data_val_folders:
+      - /home/geoffroyk/Geoffroy_PHD/nsavp/R0_FS0-frames-1000/downsampled
+      - /home/geoffroyk/Geoffroy_PHD/nsavp/R0_FA0-frames-1000/downsampled
+    gps_val_files:
+      - /home/geoffroyk/Geoffroy_PHD/nsavp/ground_truth/R0_FS0_R0_FA0_GT_positions.npz
+    gt_val_files:
+      - /home/geoffroyk/Geoffroy_PHD/nsavp/ground_truth/R0_FS0_R0_FA0_GT.npy

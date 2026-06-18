@@ -1,0 +1,41 @@
+# Brisbane-Event-VPR configuration
+# ===========================================================================
+#  EDIT `dataset_paths` (bottom of this file) to point at YOUR local copy.
+#  See DATASETS.md for the expected on-disk layout and how to reconstruct it.
+# ===========================================================================
+
+model:
+  # MixVPR neuron type used by the shipped Brisbane checkpoints.
+  aggregator_neuron: LIFNode
+
+data:
+  # The first traverse listed is the reference/anchor; positives are mined
+  # within brisbane_gps_radius metres across the training traverses.
+  training_traverse: [daytime, sunset2, sunrise]
+  val_traverse:      [sunset1, morning]      # val_traverse[0] = query, [1] = reference
+  brisbane_gps_radius: 75      # metres, positive radius for training pairs
+  denoise: 0.1                 # tonic Denoise filter_time
+  offset: 0
+  sampling_rate: 1
+  n_places: all
+  # EventDilation augmentation (training only): crop each place slice to a random
+  # temporal window of length in [min, max] seconds before framing.
+  event_dilation: true
+  dilation_window: [0.018, 0.048]   # seconds
+
+training:
+  batch_size: 128
+  epochs: 300
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  patience: 50
+  temperature: 0.07            # InfoNCE temperature
+
+evaluation:
+  recall_threshold: 30         # metres (geodesic) for a correct retrieval
+
+dataset_paths:
+  brisbane:
+    events_root:     /home/geoffroyk/SlicedBrisbane        # per-traverse dirs of per-frame .npy
+    gps_root:        /home/geoffroyk/brisbane_dataset      # *.nmea GPS files
+    hot_pixels_root: /home/geoffroyk/brisbane_hot_pixels   # *_hot_pixels.txt files

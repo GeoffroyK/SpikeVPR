@@ -1,0 +1,29 @@
+# NYC-Event-VPR (VoxelGrid) configuration
+# ===========================================================================
+#  EDIT `dataset_paths` (bottom of this file) to point at YOUR local copy.
+#  See DATASETS.md for the expected on-disk layout and how to reconstruct it.
+# ===========================================================================
+
+model:
+  # The shipped NYC checkpoint was trained with an IFNode MixVPR head.
+  aggregator_neuron: IFNode
+
+data:
+  nyc_geo_threshold: 25        # metres (UTM), positive radius + label binning
+  # EventDilation (voxel-grid form): keep a random run of >= dilation_t_min bins.
+  dilation_t_min: 5
+
+training:
+  batch_size: 128
+  epochs: 100
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  patience: 30
+  temperature: 0.07
+
+evaluation:
+  recall_threshold: 25         # metres (UTM) for a correct retrieval
+
+dataset_paths:
+  nyc:
+    root: /home/geoffroyk/nyc_event_vpr/NYC-Event-VPR_VG/NYC-Event-VPR_VoxelGrid
