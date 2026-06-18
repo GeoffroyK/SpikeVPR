@@ -94,7 +94,7 @@ python -m spikevpr.energy.compare --dataset nsavp --config configs/nsavp.yaml \
 ```
 
 A guided walkthrough (load a model, build a dataset, run recall@N, estimate
-energy) is in [notebooks/tutorial.ipynb](notebooks/tutorial.ipynb). For the full
+energy) is in [notebooks/tutorial.ipynb](./tutorial.ipynb). For the full
 data-generation → training → evaluation path, see [RUNBOOK.md](RUNBOOK.md).
 
 ## File tree
@@ -189,7 +189,7 @@ event-VPR ResNet baseline (log scale, mJ):
 qualitative query/reference examples (SpikeVPR event frames, E2VID ensemble
 reconstructions, RGB):
 
-<p align="center"><img src="figures/night_recall_summary.png" width="480"></p>
+<p align="center"><img src="figures/night_recall_summary.png" width="640"></p>
 
 ## Model
 
@@ -205,9 +205,6 @@ reconstructions, RGB):
   speed / temporal variation. Configurable per dataset (`data.dilation_window` for
   Brisbane/NSAVP, `data.dilation_t_min` for NYC voxel grids); set
   `data.event_dilation: false` to disable it on Brisbane.
-
-What changed from the original research code (and the bugs fixed along the way)
-is documented in [CHANGES.md](CHANGES.md).
 
 ## References
 
