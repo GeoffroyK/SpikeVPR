@@ -113,14 +113,13 @@ encoded in each entry name as UTM east/north (and lat/lon, heading, timestamp):
 ```
 {role}/@{utm_e}@{utm_n}@{zone}@{band}@{lat}@{lon}@@@{heading}@@@@{YYYY-MM-DD_hh-mm-ss_xxx}@{hash}@.npy
 ```
+following the standard procedure of [VPR-Bench](https://github.com/MubarizZaffar/VPR-Bench)
+
 
 The loader collapses each voxel grid to a (2, 260, 346) ON/OFF frame.
 `recall_at_n_nyc` reports both standard recall and **strict** (cross-session)
 recall, which masks same recording-day database frames — the honest metric for a
 random frame-level split.
-
-> The `val/database.zip` archive is large (~150 GB); listing it and a full recall
-> sweep take time. The tutorial uses small subsets.
 
 Reconstruction: download NYC-Event-VPR and build the voxel-grid representation
 (15 temporal bins) per frame, packing each split's references/queries into
