@@ -1,14 +1,37 @@
 # SpikeVPR
 
-**Spiking neural networks for event-based Visual Place Recognition.**
+```text
+  ______             __  __                 __     __  _______   _______  
+ /      \           |  \|  \               |  \   |  \|       \ |       \ 
+|  $$$$$$\  ______   \$$| $$   __   ______ | $$   | $$| $$$$$$$\| $$$$$$$\
+| $$___\$$ /      \ |  \| $$  /  \ /      \| $$   | $$| $$__/ $$| $$__| $$
+ \$$    \ |  $$$$$$\| $$| $$_/  $$|  $$$$$$\\$$\ /  $$| $$    $$| $$    $$
+ _\$$$$$$\| $$  | $$| $$| $$   $$ | $$    $$ \$$\  $$ | $$$$$$$ | $$$$$$$\
+|  \__| $$| $$__/ $$| $$| $$$$$$\ | $$$$$$$$  \$$ $$  | $$      | $$  | $$
+ \$$    $$| $$    $$| $$| $$  \$$\ \$$     \   \$$$   | $$      | $$  | $$
+  \$$$$$$ | $$$$$$$  \$$ \$$   \$$  \$$$$$$$    \$     \$$       \$$   \$$
+          | $$                                                            
+          | $$                                                            
+           \$$                                                                                                      
+```
+
+
+**Event-Driven Neuromorphic Vision Enables Energy-Efficient Visual Place Recognitio**
 
 SpikeVPR pairs a Spiking-Element-Wise (SEW) ResNet backbone built from
 depthwise-separable convolutions with a spiking **MixVPR** aggregation head. It
 maps a 2-channel (ON/OFF) event frame to a single 4096-D L2-normalised descriptor
 and is trained with **InfoNCE** on three event-camera datasets — **Brisbane**,
-**NSAVP** and **NYC**. Because it is a spiking network, inference is markedly more
-energy-efficient than its ANN (NetVLAD) counterpart; the release reproduces that
-comparison.
+**NSAVP** and **NYC**.
+
+## Overview
+
+Visual place recognition (VPR) aims to identify previously visited locations from visual input alone. SpikeVPR addresses this task using a fully neuromorphic pipeline:
+
+- **Event camera input** — asynchronous, sparse binary signals encoding illumination changes, robust to lighting and motion blur.
+- **Spiking neural network** — a SEW ResNet encoder with depthwise separable convolutions, followed by a spiking MixVPR aggregator, producing 512-dimensional binary descriptors.
+- **Contrastive learning** — trained end-to-end with surrogate gradient learning using the NT-Xent loss.
+- **EventDilation** — a novel data augmentation strategy that varies the temporal integration window to improve robustness to speed and temporal variations.
 
 ```python
 from spikevpr.models import build_spikevpr
@@ -233,3 +256,8 @@ If you use SpikeVPR, please cite:
   url          = {https://arxiv.org/abs/2604.03277}
 }
 ```
+## Acknowledgments
+
+This work was supported by the French Defense Innovation Agency (AID) under grant 2023 65 0082.
+
+
