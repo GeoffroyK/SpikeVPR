@@ -29,7 +29,7 @@ and is trained with **InfoNCE** on three event-camera datasets — **Brisbane**,
 Visual place recognition (VPR) aims to identify previously visited locations from visual input alone. SpikeVPR addresses this task using a fully neuromorphic pipeline:
 
 - **Event camera input** — asynchronous, sparse binary signals encoding illumination changes, robust to lighting and motion blur.
-- **Spiking neural network** — a SEW ResNet encoder with depthwise separable convolutions, followed by a spiking MixVPR aggregator, producing 512-dimensional binary descriptors.
+- **Spiking neural network** — a SEW ResNet encoder with depthwise separable convolutions, followed by a spiking MixVPR aggregator, producing N-dimensional descriptors.
 - **Contrastive learning** — trained end-to-end with surrogate gradient learning using the NT-Xent loss.
 - **EventDilation** — a novel data augmentation strategy that varies the temporal integration window to improve robustness to speed and temporal variations.
 
