@@ -80,7 +80,7 @@ python -m spikevpr.evaluation.evaluate \
     --checkpoint runs/<dataset>_r34/best_model.pth   # or weights/sew_resnet34_<dataset>.pth
 ```
 
-## 4. (optional) Energy comparison — recomputed, not hardcoded
+## 4. Energy comparison
 
 ```bash
 python -m spikevpr.energy.compare \
@@ -90,14 +90,14 @@ python -m spikevpr.energy.compare \
     --out results/energy_comparison.json
 ```
 
-## 5. (optional) Ensemble-Event-VPR baseline on NSAVP
+## 5. Ensemble-Event-VPR baseline on NSAVP
 
 ```bash
 python -m tools.nsavp_to_ensemble --nsavp_base nsavp --out_dir ensemble_nsavp
 # then run E2VID reconstruction (printed commands) in the ensemble-event-vpr repo
 ```
 
-## Quick smoke test (CPU, tiny subset)
+## Tutorial
 
 See `notebooks/tutorial.ipynb` — it loads a model, evaluates a small subset and
 estimates energy, end to end, in a few minutes on CPU.
