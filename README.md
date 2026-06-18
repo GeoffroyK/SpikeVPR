@@ -16,7 +16,7 @@
 ```
 
 
-**Event-Driven Neuromorphic Vision Enables Energy-Efficient Visual Place Recognitio**
+**Event-Driven Neuromorphic Vision Enables Energy-Efficient Visual Place Recognition**
 
 SpikeVPR pairs a Spiking-Element-Wise (SEW) ResNet backbone built from
 depthwise-separable convolutions with a spiking **MixVPR** aggregation head. It
