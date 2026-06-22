@@ -65,7 +65,7 @@ recommended for training; evaluation and the tutorial run on CPU.
 
 ## Weights
 
-Checkpoints are distributed outside git. Fetch them into `weights/`:
+You can download the checkpoints [here](https://drive.google.com/drive/folders/1lZuC2z97VEL0NlkC5_UT8eC_dMDyuxJt?usp=drive_link)
 
 ## Datasets
 
